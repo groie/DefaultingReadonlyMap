@@ -41,7 +41,12 @@ public class DefaultingReadonlyMap<K,V> implements Map<K,V> {
     @Override
     public V get(Object key) {
         Optional<Map<K, V>> mapWithKey = maps.stream().filter(map -> map.containsKey(key)).findFirst();
-        return mapWithKey.orElse(null).get(key);
+
+        if (mapWithKey.isPresent()) {
+            return mapWithKey.get().get(key);
+        } else {
+            return null;
+        }
     }
 
     @Override
