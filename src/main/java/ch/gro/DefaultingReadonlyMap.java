@@ -6,7 +6,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * Created by gro on 17/09/15.
+ * An Implementation of a Map that can be composed of multiple maps for read only purposes.
+ *
+ * All writing methods will throw a NoModificationAllowedException
  */
 public class DefaultingReadonlyMap<K,V> implements Map<K,V> {
 
