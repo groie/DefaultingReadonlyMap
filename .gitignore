@@ -14,5 +14,10 @@ hs_err_pid*
 
 # Gradle
 .gradle
+
+
 .idea
+*.iml
+*.ipr
+*.iws
 .DS_Store
