@@ -1,9 +1,6 @@
 package ch.gro;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * An Implementation of a Map that can be composed of multiple maps for read only purposes.
