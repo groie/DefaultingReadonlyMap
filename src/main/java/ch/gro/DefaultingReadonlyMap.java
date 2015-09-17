@@ -31,37 +31,38 @@ public class DefaultingReadonlyMap<K,V> implements Map<K,V> {
 
     @Override
     public boolean containsKey(Object key) {
-        return false;
+        return maps.stream().anyMatch(map -> map.containsKey(key));
     }
 
     @Override
     public boolean containsValue(Object value) {
-        return false;
+        return maps.stream().anyMatch(map -> map.containsValue(value));
     }
 
     @Override
     public V get(Object key) {
-        return null;
+        Optional<Map<K, V>> mapWithKey = maps.stream().filter(map -> map.containsKey(key)).findFirst();
+        return mapWithKey.orElse(null).get(key);
     }
 
     @Override
     public V put(K key, V value) {
-        return null;
+        throw new NoModificationAllowedException();
     }
 
     @Override
     public V remove(Object key) {
-        return null;
+        throw new NoModificationAllowedException();
     }
 
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
-
+        throw new NoModificationAllowedException();
     }
 
     @Override
     public void clear() {
-
+        throw new NoModificationAllowedException();
     }
 
     @Override
